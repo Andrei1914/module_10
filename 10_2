@@ -1,0 +1,26 @@
+2023/12/10 00:00|Домашнее задание по теме "Потоки на классах"
+
+import threading
+import time
+
+class Knight(threading.Thread):
+
+    def __init__(self, name, power, ):
+        threading.Thread.__init__(self)
+        self.name = name
+        self.power = power
+
+    def run(self):
+        print(f'{self.name}, на нас напали!')
+        enemies = 100
+        day = 0
+        while enemies > 0:
+            time.sleep(1)
+            enemies -= self.power
+            day += 1
+            print(f'{self.name} сражается {day} дней(дня), осталось {enemies} врагов!')
+        print(f'{self.name} одержал победу спустя {day} дней(дня)!')
+
+
+thread1 = Knight('Ричард', 20)
+thread1.start()
